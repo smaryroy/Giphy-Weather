@@ -6,7 +6,7 @@ let apiURL =
   cityName +
   "," +
   stateCode +
-  "&appid=";
+  "&appid=" + apiKey;
 
 //get city name
 let cityName;
