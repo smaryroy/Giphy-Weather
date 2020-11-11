@@ -68,6 +68,13 @@ body::-webkit-scrollbar-track {
 
 }
 
+.fullWide{
+  width: 100%;
+}
+
+.is-vcentered {
+  align-items: center;
+}
 
 .modal-card-head, .modal-card-foot {
   background-color: rgb(216, 132, 132);
@@ -98,6 +105,11 @@ footer strong {
 #weatherResults, #giphyResults {
   opacity : 0;
   min-height: 30fr;
+}
+#gifRedo{
+  height: 2em;
+  width: 2em;
+  margin-top: 10px;
 }
 
 

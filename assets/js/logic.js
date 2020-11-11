@@ -115,6 +115,9 @@ function getGiphySearchTerms(weatherIcon){
 }
 
 function getGiphy(){
+  if (giphySearchString === undefined || giphySearchString === null || giphySearchString.length < 1) {
+    returnForecast;
+  }
   //hide the card
   $("#giphyResults").fadeTo("fast", 0);
 	//the 'giphySearchString' variable should be set at the point
@@ -197,6 +200,10 @@ $(document).ready(function () {
 
   $("#close").click(function () {
     $("#errorModal").removeClass("is-active");
+  });
+
+  $("#gifRedo").click(function () {
+    getGiphy();
   });
 
 //have the enter and tab key trigger getForecast

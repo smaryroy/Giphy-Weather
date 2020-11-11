@@ -46,7 +46,7 @@
 </nav>
 
 <main class="container ">
-
+  <!-- user input section -->
   <div class="columns">
     <div class="column is-1 "></div>
     <div class="column is-narrow label">
@@ -61,8 +61,11 @@
     <div class="column">     </div>
   </div>
 
+<!-- main display -->
   <div class="columns">
     <div class="column is-1 "></div>
+
+      <!-- weather forecast section-->
     <div class="column is-5" id="weatherResults">
       <div class="card">
         <header class="card-header  has-text-centered">
@@ -83,8 +86,20 @@
 
     </div>
     
+    <!-- giphy display section-->
     <div class="column is-5" id="giphyResults">
       <div class="card">
+        <header class="card-header  has-text-centered is-vcentered">
+          <div class="columns fullWide">
+            <div class="column is-9">
+              <p class="card-header-title">Giphy Match</p>
+
+            </div>
+            <div class="column is-3 is-vcentered">
+              <button id="gifRedo" class="bg-mylight"><i class="fas fa-redo fa-1x"></i> </button> </p>
+            </div>
+          </div>
+        </header>
         <div class="card-image">
           <figure class="image is-4by3">
             <img id="giphy" src="" alt="Weather GIF">
