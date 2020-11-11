@@ -34,7 +34,7 @@ function getForecast(location) {
     $(".title").append(card);
   });
 }
-
+//not the MVP!!!
 function getFiveForecast(location) {
   let forecastURL =
     "https://api.openweathermap.org/data/2.5/forecast?zip=" +
