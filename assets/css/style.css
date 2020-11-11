@@ -3,6 +3,15 @@ main{
     background-color: black;
 }
 
-.banner{
-  background
+
+h3.navbar-item{
+  font-size: 1.6em;
+}
+
+.bg-blue {
+  background-color: #dbe5f0;
+}
+
+.button.is-primary {
+  background-color: #568bc4;
 }
