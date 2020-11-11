@@ -90,3 +90,25 @@ footer strong {
 .navbar-item img {
   max-height: 100%;
 }
+
+.card-header-title {
+  font-size: 1.5em;
+}
+
+#weatherResults, #giphyResults {
+  opacity : 0;
+  min-height: 30fr;
+}
+
+#dt{
+  text-align: center;
+}
+
+hr {
+  color: black;
+  background-color: black;
+  border-color: #ee4b08;
+  border-width: 5px;
+  max-width: 80%;
+  margin: auto;
+}

@@ -1,23 +1,14 @@
 //openweather api key
-let apiKey = "c0823128cbf8487c457530048730b089";
-//openweather api call url
-
-//openweather api for 5 day
+let weatherApiKey = "c0823128cbf8487c457530048730b089";
+let giphyApiKey = "iqaOXvQBb3UINfYGshwUYPJSyfka7Q0M";
+let giphyMapIcon = "";
+let giphyUrl = "";
 let giphySearchString = "";
-let returnForecast = {
-  success: false,
-  errorMessage: "",
-  name: "",
-  temp: "",
-  main: "",
-  description: "",
-	icon: ""//,
-	//"sevenday":[.....]
-}
+let errorMessage = "";
 
 let weatherToGiphyMap = {
-  "01d" : "clear sky, blue sky, good weather, nice day",
-  "01n" : "clear sky, blue sky, good weather, nice day",
+  "01d" : "clear sky, blue sky, sunshine",
+  "01n" : "stars, full moon",
   "02d" : "clouds",
   "02n" : "clouds",
   "03d" : "clouds",
@@ -28,29 +19,13 @@ let weatherToGiphyMap = {
   "09n" : "rainy",
   "10d" : "rainy",
   "10n" : "rainy",
-  "11d" : "stormy weather",
-  "11n" : "stormy weather",
-  "13d" : "snowy weather",
-  "13n" : "snowy weather",
+  "11d" : "stormy weather, lightning",
+  "11n" : "stormy weather, lightning",
+  "13d" : "snow",
+  "13n" : "snow",
   "50d" : "foggy mist",
   "50n" : "foggy mist"
 };
-
-
-
-
-function clearReturnForecast(){
-  //clear for the next query
-  console.log("clear", returnForecast);
-	returnForecast.success = false;
-  returnForecast.errorMessage = "";
-  returnForecast.name = "";
-  returnForecast.temp = "";
-  returnForecast.main = "";
-  returnForecast.description = "";
-	returnForecast.icon = "";
-  giphySearchString = "";
-}
 
 function getGiphySearchTerms(weatherIcon){
 	//pass in the icon id retrieved from forecast results
@@ -58,9 +33,15 @@ function getGiphySearchTerms(weatherIcon){
 	return weatherToGiphyMap[weatherIcon];
 }
 
-
 function getForecast(location) {
-  clearReturnForecast();
+  //clear global variables
+  giphySearchString = "";
+  errorMessage = "";
+  giphyMapIcon = "";
+  giphyUrl = "";
+
+  //hide the card
+  $("#weatherResults").fadeTo("fast", 0);
 
 	//query openweather API with location value 
   //assume the location value has already been validated
@@ -68,7 +49,7 @@ function getForecast(location) {
     "https://api.openweathermap.org/data/2.5/weather?zip=" +
     location +
     "&units=imperial&appid=" +
-    apiKey;
+    weatherApiKey;
     console.log(currentURL);
 
   $.ajax({
@@ -78,77 +59,51 @@ function getForecast(location) {
     	//if query is successful, then parse the json response 
     console.log("success", response);
     //pull out what we need
-    returnForecast.success = true;
-    returnForecast.name = response.name;
-    returnForecast.temp = response.main.temp ;
-    returnForecast.main = response.weather[0].main ;
-    returnForecast.description = response.weather[0].description ;
-    returnForecast.icon = response.weather[0].icon  ;
+    giphyMapIcon = response.weather[0].icon  ;
 
-    console.log(returnForecast);
+    $("#forcastHeader").text(response.name);
+    let iconurl = "https://openweathermap.org/img/w/" + giphyMapIcon+ ".png";
+    console.log(iconurl);
+    $("#weatherIcon").html('<img  class="wicon" src="' +  iconurl + '" alt="Weather icon" > ')
+    $("#forecastDescription").text(response.weather[0].main + " - " + response.weather[0].description);
+    $("#temperature").text("Temp: " + response.main.temp + " F");
+    $("#humidity").text("Humidity: " + response.main.humidity + "%");
+
+   //convert unix timestamp to formatted date
+    let a = new Date(response.dt * 1000);
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();
+    let hour = a.getHours();
+    let min = "0" +  a.getMinutes();
+    let sec = "0" + a.getSeconds();
+    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min.substr(-2) + ':' + sec.substr(-2) ;
+    $("#dt").text(time);
+
+     //show the card
+     $("#weatherResults").fadeTo("fast", 1);
 
     //do part two
   	//map weather icon to search string
-    giphySearchString = getGiphySearchTerms(returnForecast.icon);
+    giphySearchString = getGiphySearchTerms(giphyMapIcon);
     console.log(giphySearchString);
 
     //query for giphy url
-    let giphyUrl = getGiphy();
+    getGiphy();
 
-/*     if (giphyUrl === undefined) {
-      alert("message here");  // add a modal instead of an alert
-      return;		
-    } */
 
    })
   .fail(function( jqXHR, textStatus, errorThrown) {
-    console.log('in fail');
-    returnForecast.success = false;
-    returnForecast.errorMessage  = "Error: Unable to get weather for location " + location + ". Status: "  + errorThrown;
-
-    toggleModal(returnForecast.errorMessage);
+    console.log('in fail for getForecast');
+    errorMessage  = "Error: Unable to get weather for location " + location + ". Status: "  + errorThrown;
+    toggleModal(errorMessage);
   });
   
   
-/*   .then(function (response) {
-    console.log(response);
-    forecastResponse = response;
 
-    let temp = (response.main.temp - 273.15) * 1.8 + 32;
-    temp = Math.floor(temp);
-
-    const card = $("<div>").addClass("card");
-    const city = $("<h3>").addClass("card-title").text(response.name);
-    const temperature = $("<p>")
-      .addClass("card-text temp")
-      .text("Temp: " + temp + "F");
-
-    card.append(city, temperature);
-    $(".title").append(card);
-  }); */
-	//if query is successful, then parse the json response 
-		//put values into the the fields of the returnForecast object
-		//ie:  returnForecast.success = true;  returnForecast.main = <insert value from response here>; etc. for all fields
-	
 }
 
-
-//not the MVP!!!
-/* function getFiveForecast(location) {
-  let forecastURL =
-    "https://api.openweathermap.org/data/2.5/forecast?zip=" +
-    location +
-    "&appid=" +
-    apiKey;
-
-  $.ajax({
-    url: forecastURL,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    forecastResponse = response;
-  });
-} */
 
 
 
@@ -160,11 +115,37 @@ function getGiphySearchTerms(weatherIcon){
 }
 
 function getGiphy(){
-
+  //hide the card
+  $("#giphyResults").fadeTo("fast", 0);
 	//the 'giphySearchString' variable should be set at the point
-	//use giphySearchString to search for on the Giphy API
-	//set parameter limit to 1, set offset to a random number between 1 and 100
-	//return the value of the embed_url field in the response
+  //use giphySearchString to search for on the Giphy API
+  let randomIndex = Math.floor(Math.random() * 99); 
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
+    + encodeURIComponent(giphySearchString) 
+    + "&limit=1&offset=" + randomIndex 
+    + "&api_key=" + giphyApiKey ;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response) {
+    console.log("giphy", queryURL);
+    console.log(response.data[0].images.original.url);
+    giphyUrl =  response.data[0].images.original.url;
+
+    //display results
+    $("#giphy").attr("src", giphyUrl);
+
+    //show the card
+    $("#giphyResults").fadeTo("fast", 1);
+
+  }).fail(function( jqXHR, textStatus, errorThrown) {
+    console.log('in fail for getGiphy');
+    errorMessage  = "Error: Unable to find GIF for " + giphySearchString + ". Status: "  + errorThrown;
+    toggleModal(errorMessage);
+  });
+  ;
+
 }
 
 
@@ -179,11 +160,9 @@ function validateZip(locationZip){
 }
 
 function toggleModal(displayMessage) {
-console.log("toggle " + displayMessage);
-$("#errorMessage").text(displayMessage);
-   let modal = $("#errorModal");
-   
-   modal.addClass("is-active");
+  $("#errorMessage").text(displayMessage);
+  let modal = $("#errorModal");
+  modal.addClass("is-active");
 }
 
 
@@ -199,14 +178,11 @@ function giphyWeather(){
   }
   console.log(newZip);
   
-	//query for forecast, location variable should be validated
-	// results go into returnForecast
+	//query for forecast
   getForecast(newZip);
   
-
   //clear input
   $("#locationInput").val("");
-
 
 }
 
@@ -223,4 +199,52 @@ $(document).ready(function () {
     $("#errorModal").removeClass("is-active");
   });
 
+//have the enter and tab key trigger getForecast
+$("#searchZipButton").keyup(function(event) { 
+  if (event.keyCode === 13 || event.keyCode === 9) { 
+      $("#searchZipButton").click(); 
+  } 
+}); 
+
+
 });
+
+
+
+
+//not the MVP!!!
+/* function getFiveForecast(location) {
+  let forecastURL =
+    "https://api.openweathermap.org/data/2.5/forecast?zip=" +
+    location +
+    "&appid=" +
+    weatherApiKey;
+
+  $.ajax({
+    url: forecastURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    forecastResponse = response;
+  });
+} */
+
+
+
+
+/*   .then(function (response) {
+    console.log(response);
+    forecastResponse = response;
+
+    let temp = (response.main.temp - 273.15) * 1.8 + 32;
+    temp = Math.floor(temp);
+
+    const card = $("<div>").addClass("card");
+    const city = $("<h3>").addClass("card-title").text(response.name);
+    const temperature = $("<p>")
+      .addClass("card-text temp")
+      .text("Temp: " + temp + "F");
+
+    card.append(city, temperature);
+    $(".title").append(card);
+  }); */
