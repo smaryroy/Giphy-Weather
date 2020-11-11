@@ -18,6 +18,7 @@ h1{
 
 
 .column {
+  text-align: center;
   position: relative;
   background-color: white;
   width: 70%;
@@ -37,6 +38,14 @@ navbar-item{
 
 .button.is-primary {
   background-color: #3F6398;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: white;        /* color of the tracking area */
+
 }
 
 
