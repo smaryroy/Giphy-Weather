@@ -35,7 +35,7 @@ function getForecast(location) {
   });
 }
 
-/* function getFiveForecast(location) {
+function getFiveForecast(location) {
   let forecastURL =
     "https://api.openweathermap.org/data/2.5/forecast?zip=" +
     location +
@@ -49,7 +49,7 @@ function getForecast(location) {
     console.log(response);
     forecastResponse = response;
   });
-} */
+}
 // let cityName = $("#cityName");
 
 // //get statecode
@@ -71,6 +71,15 @@ $("#searchZipButton").click(function () {
   let newZip = $("#locationInput").val().trim();
   getForecast(newZip);
 
+  /* let zipRegex = /^\d{5}$/;
+
+  if (zipRegex.test(newZip)) {
+    getForecast();
+    getFiveForecast();
+  } else {
+    let newModal = $("#zipModal");
+    newModal.modal("show");
+  } */
   //clear input
   $("#locationInput").val("");
 });
