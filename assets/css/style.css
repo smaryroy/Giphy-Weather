@@ -69,6 +69,9 @@ body::-webkit-scrollbar-track {
 }
 
 
+.modal-card-head, .modal-card-foot {
+  background-color: rgb(216, 132, 132);
+}
 
 .footer{
   background-color:#3F6398;
