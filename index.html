@@ -13,15 +13,40 @@
 <body>
 
 <!-- Main container -->
-<nav class="level">
-  <!-- Right side -->
-  <div class="level-right">
-    <p class="level-item"><strong>Home</strong></p>
-    <p class="level-item"><a>Five Day Forecast</a></p>
-    <p class="level-item"><a>Gipphys</a></p>
-    <p class="level-item"><a>contact us</a></p>
+
+
+<nav class="navbar bg-blue" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img  src="./assets/images/gw.png" width="40px" height="40px">
+    </a>
+    <h3 class="navbar-item">Giphy Weather</h3>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">Five Day Forecast</a>
+      <a class="navbar-item"> GIFS</a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons  bg-darkBlue">
+          <a class="button is-primary">
+            <strong>Contact Us</strong>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
+
+
+
   <section class="hero">
     <div class="hero-body">
       <div class="container">
