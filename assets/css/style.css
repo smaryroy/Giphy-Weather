@@ -1,30 +1,40 @@
-
-body{
-
-background: url("../images/background.png");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: #3F6398;
-background-position: fixed;
+body, html {
+  min-height: 100%;  /*100vh;*/
+  width: 100%;
+  height: 100%;
+  background: url(../images/background.png); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #3F6398;
+  background-position: fixed;
 }
 
-h1{
+
+.container{
+  background-color:white;
+  margin: 2em;
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  justify-content: flex-start;
+}
+
+h3.navbar-item{
+  font-size: 1.6em;
+}
+
+/* h1{
  background: url("../images/transparentbanner.png");
  background-size: cover;
  width: 100%;
   height: 400px;
-}
+} */
 
-
-.column {
-  text-align: center;
-  position: relative;
-  background-color: white;
-  width: 70%;
-  height: 100%;
-  margin: 10px;
-  padding: 10px;
+.label {
+  font-size: 1.2em;
 }
 
 navbar-item{
@@ -36,8 +46,12 @@ navbar-item{
   background-color: #dbe5f0;
 }
 
+.bg-dkblue {
+  background-color: #121f2e;
+}
+
 .button.is-primary {
-  background-color: #3F6398;
+  background-color: #568bc4;
 }
 
 body::-webkit-scrollbar {
@@ -49,15 +63,21 @@ body::-webkit-scrollbar-track {
 }
 
 
+
 .footer{
   background-color:#3F6398;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  border-top: 10px solid;
-  margin-top: 20px;
+  height: 5em;
+  padding: 0;
+  color: white;
 }
 
+footer strong {
+  color: white;
+}
 
-
+.navbar-item img {
+  max-height: 100%;
+}
