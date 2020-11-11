@@ -118,8 +118,8 @@ function getGiphy(){
   if (giphySearchString === undefined || giphySearchString === null || giphySearchString.length < 1) {
     returnForecast;
   }
-  //hide the card
-  $("#giphyResults").fadeTo("fast", 0);
+
+
 	//the 'giphySearchString' variable should be set at the point
   //use giphySearchString to search for on the Giphy API
   let randomIndex = Math.floor(Math.random() * 99); 
@@ -140,7 +140,8 @@ function getGiphy(){
     $("#giphy").attr("src", giphyUrl);
 
     //show the card
-    $("#giphyResults").fadeTo("fast", 1);
+    $("#giphyResults").fadeTo(20, 1);
+
 
   }).fail(function( jqXHR, textStatus, errorThrown) {
     console.log('in fail for getGiphy');
@@ -207,7 +208,7 @@ $(document).ready(function () {
   });
 
 //have the enter and tab key trigger getForecast
-$("#searchZipButton").keyup(function(event) { 
+$("#locationInput").keyup(function(event) { 
   if (event.keyCode === 13 || event.keyCode === 9) { 
       $("#searchZipButton").click(); 
   } 
