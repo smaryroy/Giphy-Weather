@@ -12,24 +12,62 @@
 
 <body>
 
+    <div class="modal fade" id="zipModal" style="display:none">   
+        <div class ="modal-dialog"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Invalid Input</h2>
+                </div>
+                <div class="modal-body">
+                    <p>The input will only accept 5 digit zip codes</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>                
+    </div>
+
 <!-- Main container -->
-<nav class="level">
-
-</nav>
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          
-        </h1>
-
-          <!-- Right side -->
-  <div class="level-right">
-    <p class="level-item"><strong>Home</strong></p>
-    <p class="level-item"><a>Five Day Forecast</a></p>
-    <p class="level-item"><a>Gipphys</a></p>
-    <p class="level-item"><a>contact us</a></p>
+<nav class="navbar bg-blue" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img  src="./assets/images/transparentbanner.png" width="80px" height="80px>
+    </a>
+    <h3 class="navbar-item">Giphy Weather</h3>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">Five Day Forecast</a>
+      <a class="navbar-item"> GIFS</a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons  bg-darkBlue">
+          <a class="button is-primary">
+            <strong>Contact Us</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        
+      </h1>
+
+  
+
       
       </div>
     </div>
@@ -39,6 +77,7 @@
     <div class="column">
       <h3> Select a zip-code:</h3>
       <input id="locationInput" class="input is-rounded" type="text" placeholder="zip-code here"> <i class="fas fa-search-location"></i>
+      <button id="searchZipButton" class="bg-mylight"><i class="fas fa-search fa-2x"></i> </button> 
     </div>
     <div class="column"> (Placement of weather api here) .... Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod cum impedit repellendus quo nobis reiciendis recusandae blanditiis ipsum. Saepe quibusdam porro culpa ipsum tenetur, quasi non? Veniam cupiditate aut ratione.</div>
     <div class="column">
@@ -49,32 +88,24 @@
           </p>
         </figure>
     </div>
+    </div>
  
   </div>
-
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        &copy; 2020 Barely Making It</a>. <br><strong>Powered By GIPHY</strong>
+      </p>
+    </div>
+  </footer>
   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script type="text/javascript" src="./assets/js/script.js"></script> 
+<script type="text/javascript" src="./assets/js/logic.js"></script> 
 </body>
 
 </html>
