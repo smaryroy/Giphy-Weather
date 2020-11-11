@@ -67,8 +67,8 @@ console.log(forecastResponse);
 //get response[key:value] - send value to giphy call
 
 //CLICK EVENT
-$("#locationInput").click(function () {
-  let newZip = $("").val().trim();
+$("#searchZipButton").click(function () {
+  let newZip = $("#locationInput").val().trim();
   getForecast(newZip);
 
   //clear input
