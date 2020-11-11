@@ -20,6 +20,18 @@ function getForecast(location) {
   }).then(function (response) {
     console.log(response);
     forecastResponse = response;
+
+    let temp = (response.main.temp - 273.15) * 1.8 + 32;
+    temp = Math.floor(temp);
+
+    const card = $("<div>").addClass("card");
+    const city = $("<h3>").addClass("card-title").text(response.name);
+    const temperature = $("<p>")
+      .addClass("card-text temp")
+      .text("Temp: " + temp + "F");
+
+    card.append(city, temperature);
+    $(".title").append(card);
   });
 }
 
@@ -45,7 +57,7 @@ function getForecast(location) {
 
 // //AJAX request for 5day
 
-getForecast("55810");
+//getForecast("55810");
 console.log(forecastResponse);
 //get city, state, weather from response
 
@@ -55,11 +67,17 @@ console.log(forecastResponse);
 //get response[key:value] - send value to giphy call
 
 //CLICK EVENT
-$("").click(function () {});
+$("#locationInput").click(function () {
+  let newZip = $("").val().trim();
+  getForecast(newZip);
+
+  //clear input
+  $("#locationInput").val("");
+});
 
 //main get giphyweather function
-function giphyWeather() {
-  //validations
+// function giphyWeather() {
+//   //validations
 
-  getForecast();
-}
+//   getForecast();
+// }
