@@ -35,7 +35,7 @@ function getForecast(location) {
   });
 }
 
-/* function getFiveForecast(location) {
+function getFiveForecast(location) {
   let forecastURL =
     "https://api.openweathermap.org/data/2.5/forecast?zip=" +
     location +
@@ -49,7 +49,7 @@ function getForecast(location) {
     console.log(response);
     forecastResponse = response;
   });
-} */
+}
 // let cityName = $("#cityName");
 
 // //get statecode
@@ -58,7 +58,7 @@ function getForecast(location) {
 // //AJAX request for 5day
 
 //getForecast("55810");
-console.log(forecastResponse);
+//console.log(forecastResponse);
 //get city, state, weather from response
 
 //store response-city, state, weather in localstorage
@@ -69,10 +69,27 @@ console.log(forecastResponse);
 //CLICK EVENT
 $("#searchZipButton").click(function () {
   let newZip = $("#locationInput").val().trim();
-  getForecast(newZip);
 
+  let zipRegex = /^\d{5}$/;
+  function toggleModal() {
+    let modal = $("#zipModal");
+    modal.addClass("is-active");
+  }
+  if (zipRegex.test(newZip)) {
+    console.log(zipRegex.test(newZip));
+    getForecast(newZip);
+    getFiveForecast(newZip);
+  } else {
+    toggleModal();
+    console.log(zipRegex.test(newZip));
+    let newModal = $("#zipModal");
+    newModal.addClass(".modal-is-active");
+  }
   //clear input
   $("#locationInput").val("");
+});
+$("#close").click(function () {
+  $("#zipModal").removeClass("is-active");
 });
 
 //main get giphyweather function
