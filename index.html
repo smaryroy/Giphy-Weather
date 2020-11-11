@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Giphy-Weather</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Giphy-Weather</title>
 </head>
+
 <body>
+
     <div class="modal fade" id="zipModal" style="display:none">   
         <div class ="modal-dialog"> 
             <div class="modal-content">
@@ -23,13 +28,53 @@
         </div>                
     </div>
 
+<!-- Main container -->
+<nav class="level">
+  <!-- Right side -->
+  <div class="level-right">
+    <p class="level-item"><strong>Home</strong></p>
+    <p class="level-item"><a>Five Day Forecast</a></p>
+    <p class="level-item"><a>Gipphys</a></p>
+    <p class="level-item"><a>contact us</a></p>
+  </div>
+</nav>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Gipphy-Weather
+        </h1>
+      
+      </div>
+    </div>
+  </section>
 
+  <div class="columns is-mobile">
+    <div class="column">
+      <h3> Select a zip-code:</h3>
+      <input id="locationInput" class="input is-rounded" type="text" placeholder="zip-code here"> <i class="fas fa-search-location"></i>
+      <button id="searchZipButton" class="bg-mylight"><i class="fas fa-search fa-2x"></i> </button> 
+    </div>
+    <div class="column"> (Placement of weather api here) .... Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod cum impedit repellendus quo nobis reiciendis recusandae blanditiis ipsum. Saepe quibusdam porro culpa ipsum tenetur, quasi non? Veniam cupiditate aut ratione.</div>
+    <div class="column">
+      <article class="media"> 
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/128x128.png">
+          </p>
+        </figure>
+    </div>
+ 
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+  
 
-    <!-- this is here for testing only - remove later -->
-    <script src="./assets/js/weatherToGiphyTest.js"></script>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script type="text/javascript" src="./assets/js/script.js"></script> 
+<script type="text/javascript" src="./assets/js/logic.js"></script> 
+</body>
+
 </html>
