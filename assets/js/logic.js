@@ -39,6 +39,14 @@ function getForecast(location) {
   errorMessage = "";
   giphyMapIcon = "";
   giphyUrl = "";
+  $("#forcastHeader").text("");
+  $("#weatherIcon").html("")
+  $("#forecastDescription").text("");
+  $("#temperature").text("");
+  $("#humidity").text("");
+  $("#giphy").attr("src", "");
+  $("#giphyResults").css("opacity", 0);
+
 
   //hide the card
   $("#weatherResults").fadeTo("fast", 0);
@@ -138,7 +146,9 @@ function getGiphy(){
 
     //display results
     $("#giphy").attr("src", giphyUrl);
-
+    $("#giphy").attr("width", "400px");
+    $("#giphy").attr("height", "400px");
+    $("#giphyResults").css("opacity", 1);
     //show the card
     $("#giphyResults").fadeTo(20, 1);
 
