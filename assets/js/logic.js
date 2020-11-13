@@ -144,7 +144,8 @@ function getGiphy(){
 
     //display results
     $("#giphy").attr("src", giphyUrl);
-
+    $("#giphy").attr("width", "400px");
+    $("#giphy").attr("height", "400px");
     //show the card
     $("#giphyResults").fadeTo(20, 1);
 
