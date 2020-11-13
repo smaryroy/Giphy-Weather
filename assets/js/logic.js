@@ -44,6 +44,8 @@ function getForecast(location) {
   $("#forecastDescription").text("");
   $("#temperature").text("");
   $("#humidity").text("");
+  $("#giphy").attr("src", "");
+  $("#giphyResults").css("opacity", 0);
 
 
   //hide the card
@@ -146,6 +148,7 @@ function getGiphy(){
     $("#giphy").attr("src", giphyUrl);
     $("#giphy").attr("width", "400px");
     $("#giphy").attr("height", "400px");
+    $("#giphyResults").css("opacity", 1);
     //show the card
     $("#giphyResults").fadeTo(20, 1);
 
