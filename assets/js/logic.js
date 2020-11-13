@@ -39,6 +39,12 @@ function getForecast(location) {
   errorMessage = "";
   giphyMapIcon = "";
   giphyUrl = "";
+  $("#forcastHeader").text("");
+  $("#weatherIcon").html("")
+  $("#forecastDescription").text("");
+  $("#temperature").text("");
+  $("#humidity").text("");
+
 
   //hide the card
   $("#weatherResults").fadeTo("fast", 0);
