@@ -96,7 +96,7 @@ footer strong {
   opacity : 0;
    height: 30fr; 
    padding: 5px;
-  border: ridge;
+   border: 1px solid lightgrey ;
 }
 
 
