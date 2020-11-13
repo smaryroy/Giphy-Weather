@@ -12,6 +12,7 @@ No installation beyond a web browser should be needed to view the webpage. A cod
 
 This webpage is viewable at: https://ironicminer.github.io/Giphy-Weather/
 Here is an example image of the page: ![Image of webpage](screenshot.PNG)
+![Contact page](assets\images\contacthtml.png)
 
 ## Contributing
 
@@ -27,6 +28,9 @@ Nathan Larson
 Nadirah Jama
 Roxette Banos
 Ben Flynn
+Mailchimp - https://mailchimp.com/
+Giphy - https://giphy.com/
+OpenWeathermap - https://openweathermap.org/api
 
 ## License
 
