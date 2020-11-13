@@ -12,7 +12,7 @@ No installation beyond a web browser should be needed to view the webpage. A cod
 
 This webpage is viewable at: https://ironicminer.github.io/Giphy-Weather/
 Here is an example image of the page: ![Image of webpage](./assets/images/screenshot.PNG)
-![Contact page](assets\images\contacthtml.png)
+![Contact page](./assets/images/contacthtml.png)
 
 ## Contributing
 
