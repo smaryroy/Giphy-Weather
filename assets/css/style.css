@@ -124,14 +124,13 @@ hr {
 
 
 /* image hover effect */
-.hover12 figure {
-	background: #3F6398;
-}
-.hover12 figure img {
-	opacity: 1;
+.hover10 figure img {
+	-webkit-filter: grayscale(0) blur(0);
+	filter: grayscale(0) blur(0);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
-.hover12 figure:hover img {
-	opacity: .5;
+.hover10 figure:hover img {
+	-webkit-filter: grayscale(100%) blur(3px);
+	filter: grayscale(100%) blur(3px);
 }
