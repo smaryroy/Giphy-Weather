@@ -105,14 +105,14 @@ footer strong {
 #weatherResults, #giphyResults {
   opacity : 0;
   height: 40fr;
-  border: groove;
+  
+  
 }
 #gifRedo{
   height: 2em;
   width: 2em;
   margin-top: 10px;
 }
-
 
 hr {
   color: black;
