@@ -5,6 +5,8 @@ let giphyMapIcon = "";
 let giphyUrl = "";
 let giphySearchString = "";
 let errorMessage = "";
+let cityZipList ;
+let cityZipName = "";
 
 let weatherToGiphyMap = {
   "01d" : "clear sky, blue sky, sunshine",
@@ -26,6 +28,39 @@ let weatherToGiphyMap = {
   "50d" : "foggy mist",
   "50n" : "foggy mist"
 };
+
+function initialize(){
+  console.log("history", cityZipList);
+  cityZipList = JSON.parse(localStorage.getItem("cityZipList"));
+  console.log("history", cityZipList);
+  if (cityZipList === undefined || cityZipList === null) {
+    cityZipList = [];
+  } else {
+      for(i = 0; i < cityZipList.length; i++) {
+          $("#cityZipDisplay").prepend('<li class="list-group-item">' + cityZipList[i] + '</li>');
+      }
+  }
+}
+
+function addToCityZipList(){
+  console.log("add to history", cityZipName);
+  let found = false;
+  for (i = 0; i < cityZipList.length; i++){
+      if (cityZipList[i] === cityZipName) {
+          found = true;
+      }
+  }
+  if (!found) {
+      //add to city list array
+      cityZipList.push(cityZipName);
+      //update localstorage
+      localStorage.setItem("cityZipList", JSON.stringify(cityZipList));
+      //add to city list display
+      $("#cityZipDisplay").prepend('<li class="list-group-item">' + cityZipName + '</li>');
+  }
+
+}
+
 
 function getGiphySearchTerms(weatherIcon){
 	//pass in the icon id retrieved from forecast results
@@ -70,6 +105,9 @@ function getForecast(location) {
     giphyMapIcon = response.weather[0].icon  ;
 
     $("#forcastHeader").text(response.name);
+    cityZipName = response.name + ", " + cityZipName;
+    addToCityZipList();
+
     let iconurl = "https://openweathermap.org/img/w/" + giphyMapIcon+ ".png";
     console.log(iconurl);
     $("#weatherIcon").html('<img  class="wicon" src="' +  iconurl + '" alt="Weather icon" > ')
@@ -149,7 +187,7 @@ function getGiphy(){
     $("#giphy").attr("width", "400px");
     $("#giphy").attr("height", "400px");
     $("#giphyResults").css("opacity", 1);
-    //show the card
+  //show the card
     $("#giphyResults").fadeTo(20, 1);
 
 
@@ -191,6 +229,7 @@ function giphyWeather(){
 		return;
   }
   console.log(newZip);
+  cityZipName = newZip;
   
 	//query for forecast
   getForecast(newZip);
@@ -202,6 +241,8 @@ function giphyWeather(){
 
 
 $(document).ready(function () {
+
+  initialize();
 
   //CLICK EVENT
   $("#searchZipButton").click(function () {
