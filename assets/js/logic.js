@@ -10,7 +10,7 @@ let cityZipName = "";
 
 let weatherToGiphyMap = {
   "01d" : "clear sky, blue sky, sunshine",
-  "01n" : "stars, full moon",
+  "01n" : "moon and stars, stars",
   "02d" : "clouds",
   "02n" : "clouds",
   "03d" : "clouds",
