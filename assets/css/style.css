@@ -115,13 +115,19 @@ footer strong {
 
 hr {
   color: black;
-  background-color: black;
+  background-color:black;
   border-color: #ee4b08;
   border-width: 5px;
   max-width: 80%;
   margin: auto;
 }
 
+#dt{
+  background-color:#A8C9E5;
+  border-width: 5px;
+  max-width: 80%;
+  margin: auto;
+}
 
 /* image hover effect */
 .hover10 figure img {
@@ -133,4 +139,9 @@ hr {
 .hover10 figure:hover img {
 	-webkit-filter: grayscale(100%) blur(3px);
 	filter: grayscale(100%) blur(3px);
+}
+
+
+div {
+  cursor:crosshair;
 }
