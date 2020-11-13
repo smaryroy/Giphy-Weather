@@ -37,7 +37,7 @@ function initialize(){
     cityZipList = [];
   } else {
       for(i = 0; i < cityZipList.length; i++) {
-          $("#cityZipDisplay").prepend('<li class="list-group-item">' + cityZipList[i] + '</li>');
+          $("#cityZipDisplay").prepend('<li  class="borderlist">' + cityZipList[i] + '</li>');
       }
   }
 }
@@ -56,7 +56,7 @@ function addToCityZipList(){
       //update localstorage
       localStorage.setItem("cityZipList", JSON.stringify(cityZipList));
       //add to city list display
-      $("#cityZipDisplay").prepend('<li class="list-group-item">' + cityZipName + '</li>');
+      $("#cityZipDisplay").prepend('<li class="borderlist">' + cityZipName + '</li>');
   }
 
 }
@@ -257,6 +257,18 @@ $(document).ready(function () {
   $("#gifRedo").click(function () {
     getGiphy();
   });
+
+  $("li.borderlist").click(function () {
+    let selItem = $(this).text();
+    let bits = selItem.split(",");
+
+    console.log(selItem, bits);
+    if(bits.length === 2){
+      $("#locationInput").val(bits[1].trim());
+      $("#searchZipButton").click();
+    }
+
+  })
 
 //have the enter and tab key trigger getForecast
 $("#locationInput").keyup(function(event) { 
