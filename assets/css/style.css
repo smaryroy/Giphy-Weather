@@ -4,24 +4,22 @@
   margin: 0;
 }
 
-body, html {
-  min-height: 100%;  /*100vh;*/
-  width: 100%;
-  height: 100%;
+body {
   background: url(../images/background.png); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #3F6398;
   background-position: fixed;
+  padding:10px;
+  padding-bottom:60px;   /* Height of the footer */
 }
-
 
 .container{
   background-color:white;
-  margin: 2em;
+  margin: 2em auto;
   width: 100%;
-  height: 100%;
+  height:100%;
 }
 
 .hero {
@@ -32,20 +30,12 @@ h3.navbar-item{
   font-size: 1.6em;
 }
 
-/* h1{
- background: url("../images/transparentbanner.png");
- background-size: cover;
- width: 100%;
-  height: 400px;
-} */
-
 .label {
   font-size: 1.2em;
 }
 
 navbar-item{
   font-size: 1.6em;
-
 }
 
 .bg-blue {
@@ -80,12 +70,12 @@ body::-webkit-scrollbar-track {
   background-color: rgb(216, 132, 132);
 }
 
-.footer{
+footer{
   background-color:#3F6398;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5em;
+  height: 60px;
   padding: 0;
   color: white;
 }
@@ -104,15 +94,17 @@ footer strong {
 
 #weatherResults, #giphyResults {
   opacity : 0;
-  height: 40fr;
-  border: groove;
+   height: 30fr; 
+   padding: 5px;
+   border: 1px solid lightgrey ;
 }
+
+
 #gifRedo{
   height: 2em;
   width: 2em;
   margin-top: 10px;
 }
-
 
 hr {
   color: black;
@@ -142,7 +134,26 @@ hr {
 	filter: grayscale(100%) blur(3px);
 }
 
-
 div {
   cursor:crosshair;
+}
+
+.content ul, .no-bullets {
+  list-style-type: none;
+  list-style: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.borderlist {
+  list-style-position:inside;
+  border: 1px dashed lightgrey;
+  cursor: pointer;
+}
+li:hover{
+  background-color:  #dbe5f0;
+}
+
+.lowerMargin {
+  margin-bottom: 20px;
 }
