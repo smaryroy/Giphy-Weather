@@ -162,7 +162,7 @@ function getGiphySearchTerms(weatherIcon){
 
 function getGiphy(){
   if (giphySearchString === undefined || giphySearchString === null || giphySearchString.length < 1) {
-    returnForecast;
+    return;
   }
 
 
